@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>툴팁 예제</title>
+  <style>
+    body {
+      margin: 0;height: 100vh; display: flex;
+      justify-content: center; align-items: center; /* 세로 중앙 */
+    }
+
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .tooltip-text {
+      position: absolute;
+      top: -190px;  /* 툴팁을 위로 이동 */
+      right: -250px;  /* 툴팁을 오른쪽 대각선 상단에 위치 */
+      width: 250px;
+      max-height: 150px;
+      background-color: #333;
+      color: #fff;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-y: auto;
+      z-index: 10;
+
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* 툴팁 컨테이너 hover 시 툴팁 보이게 */
+    .tooltip-container:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* 툴팁 텍스트 자체에도 hover 추가 (툴팁 본문에 마우스가 가도 사라지지 않도록) */
+    .tooltip-text:hover {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tooltip-container" id="tooltip1">
+    <span class="tooltip-trigger">여기에 마우스를 올려보세요</span>
+    <div class="tooltip-text" id="tooltip1-text">
+      이 툴팁은 오른쪽 대각선 상단에 위치하며,<br>
+      내용이 길 경우 스크롤이 가능합니다.<br><br>
+      - 예시 항목 1<br>
+      - 예시 항목 2<br>
+      - 예시 항목 3<br>
+      - 예시 항목 4<br>
+      - 예시 항목 5<br>
+      - 예시 항목 6<br>
+      - 예시 항목 7<br>
+      - 예시 항목 8<br>
+      - 예시 항목 9<br>
+      - 예시 항목 10<br>
+      - 예시 항목 11<br>
+      - 예시 항목 12<br>
+    </div>
+  </div>
+  &nbsp; &nbsp;&nbsp;&nbsp;
+  <div class="tooltip-container" id="tooltip2">
+    <span class="tooltip-trigger">여기에 마우스를 올려보세요</span>
+    <div class="tooltip-text" id="tooltip2-text">
+      또 다른 툴팁 내용입니다!<br>
+      여기는 다른 텍스트로 구성되어 있습니다.<br><br>
+      - 예시 항목 A<br>
+      - 예시 항목 B<br>
+      - 예시 항목 C<br>
+      - 예시 항목 D<br>
+    </div>
+  </div>
+</body>
+</html>

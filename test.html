@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>툴팁 예제</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .tooltip-text {
+      position: absolute;
+      top: -180px;
+      right: -250px;
+      width: 250px;
+      max-height: 150px;
+      background-color: #333;
+      color: #fff;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-y: auto;
+      z-index: 10;
+      visibility: hidden;  /* 기본적으로 툴팁 숨기기 */
+      opacity: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .tooltip-text::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 20px;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 12px solid #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tooltip-container" id="tooltip1">
+    <span class="tooltip-trigger" id="tooltip-trigger">여기에 마우스를 올려보세요</span>
+    <div class="tooltip-text" id="tooltip1-text">
+      이 툴팁은 오른쪽 대각선 상단에 위치하며,<br>
+      내용이 길 경우 스크롤이 가능합니다.<br><br>
+      - 예시 항목 1<br>
+      - 예시 항목 2<br>
+      - 예시 항목 3<br>
+      - 예시 항목 4<br>
+      - 예시 항목 5<br>
+      - 예시 항목 6<br>
+      - 예시 항목 7<br>
+      - 예시 항목 8<br>
+      - 예시 항목 9<br>
+      - 예시 항목 10<br>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      // 마우스를 툴팁 트리거에 올리면 툴팁 보이기
+      $('#tooltip1').on('mouseenter', function() {
+        const tooltip = $('#tooltip1-text');
+        tooltip.css({
+          visibility: 'visible',
+          opacity: '1'
+        });
+      });
+
+      // 마우스를 툴팁 트리거에서 떼면 툴팁 숨기기
+      $('#tooltip1').on('mouseleave', function() {
+        const tooltip = $('#tooltip1-text');
+        tooltip.css({
+          visibility: 'hidden',
+          opacity: '0'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
